@@ -1,33 +1,25 @@
 The idea is to process tournament standings pages. (blah blah...)
+Sample bracket: [ARLO][]
+
+[ARLO]: http://challonge.com/ARLOPMS
 
 Authors:
   - dckc
   - FlashingFire
 
-## Dev Notes
+## Dependencies / Acknowledgements
 
- - IntelliJ
-   - Scala
-   - SBT
- - open source wishes
-   - HTTP: dispatch
-   - HTML: JSoup
- - Scala
-   - pattern matching
-   - type inference
- - HTML
- - CSS selectors
+ - [Scala][]
+ - [Dispatch][]
+ - [jsoup][]
+ 
+[Scala]: http://www.scala-lang.org/documentation/getting-started.html
+[Dispatch]: http://dispatch.databinder.net/Dispatch.html
+[jsoup]: http://jsoup.org/
 
-http://jsoup.org/
+## Development Notes
 
-http://confluence.jetbrains.com/display/IntelliJIDEA/Getting+Started+with+SBT
-http://blog.jetbrains.com/scala/2012/12/28/a-new-way-to-compile/
-http://dispatch.databinder.net/Dispatch.html
+See:
+  - [A Start in the Craft of Quality Software Development][1]
 
-Publishing a Project on GitHub
-http://www.jetbrains.com/idea/webhelp/publishing-a-project-on-github.html
-http://stackoverflow.com/questions/1072784/how-can-i-convert-a-java-iterable-to-a-scala-iterable
-http://www.scala-lang.org/api/current/index.html#package
-
-markdown plugin
-http://plugins.jetbrains.com/plugin/5970?pr=phpStorm
+[1]: http://www.madmode.com/2014/06-pada1.html
