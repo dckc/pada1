@@ -2,4 +2,4 @@ name := "pada1"
 
 version := "1.0"
 
-scalaVersion := "2.10.2"
+libraryDependencies += "net.databinder.dispatch" % "dispatch-core_2.10" % "0.11.1"
