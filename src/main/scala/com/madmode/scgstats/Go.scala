@@ -1,9 +1,7 @@
 package com.madmode.scgstats
 
 import dispatch.{Http, as, url}
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Element
-import scala.collection.JavaConverters._
+
 
 /**
  * Fetch some info from the web.
@@ -16,16 +14,10 @@ object Go extends App {
   val svc = url("http://challonge.com/ARLOPMS")
   val pg = Http(svc OK as.String)
   for (content <- pg) {
-    val doc = Jsoup.parse(content);
-
-    for (match_ <- doc.select("td.core").asScala) {
-      val top = match_.select(".match_top_half")
-      val bottom = match_.select(".match_bottom_half")
-      val winner = match_.select(".winner")
-
-      println("match top: " + top.text())
-      println("match bottom: " + bottom.text())
-      println("match winner: " + winner.text())
+    for (m <- BracketDoc.eachMatch(content)) {
+      println("match top: " + m.top)
+      println("match bottom: " + m.bottom)
+      println("match winner: " + m.winner)
 
     }
     println("Done! content length:" + content.length())
