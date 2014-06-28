@@ -1,7 +1,8 @@
 package com.madmode.scgstats
 
 /**
- * Created by connolly on 6/27/14.
+ * Fetch some info from the web.
+ * ack: http://dispatch.databinder.net/Dispatch.html
  */
 object Go extends App {
   import dispatch._, Defaults._
