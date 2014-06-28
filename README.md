@@ -15,3 +15,5 @@ Authors:
  - Scala
    - pattern matching
    - type inference
+ - HTML
+ - CSS selectors
