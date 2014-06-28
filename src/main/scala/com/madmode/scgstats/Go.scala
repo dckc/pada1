@@ -1,5 +1,6 @@
 package com.madmode.scgstats
 
+import dispatch.{Http, as, url}
 import org.htmlcleaner.HtmlCleaner
 
 /**
@@ -7,7 +8,7 @@ import org.htmlcleaner.HtmlCleaner
  * ack: http://dispatch.databinder.net/Dispatch.html
  */
 object Go extends App {
-  import dispatch._, Defaults._
+  import dispatch.Defaults.executor
 
   // http://htmlcleaner.sourceforge.net/javause.php
   val svc = url("http://htmlcleaner.sourceforge.net/javause.php")
@@ -20,6 +21,6 @@ object Go extends App {
       println("anchor: " + elem.getText)
     }
 
-    println("Done!" + content.length())
+    println("Done! content length:" + content.length())
   }
 }
