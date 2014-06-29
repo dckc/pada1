@@ -58,6 +58,9 @@ trait BracketInfo extends HttpService {
   def log: akka.event.LoggingAdapter
 
   val myRoute =
+    path("") {
+      getFromResource("com/madmode/scgstats/index.html")
+    } ~
     path("stats") {
       get {
         parameter('tourney) { tourneyName =>
