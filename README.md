@@ -10,11 +10,11 @@ Authors:
 ## Dependencies / Acknowledgements
 
  - [Scala][]
- - [Dispatch][]
+ - [spray][]
  - [jsoup][]
  
 [Scala]: http://www.scala-lang.org/documentation/getting-started.html
-[Dispatch]: http://dispatch.databinder.net/Dispatch.html
+[spray]: http://spray.io/
 [jsoup]: http://jsoup.org/
 
 ## Development Notes

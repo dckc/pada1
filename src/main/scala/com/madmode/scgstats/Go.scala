@@ -1,25 +1,23 @@
 package com.madmode.scgstats
 
-import dispatch.{Http, as, url}
+import akka.actor.ActorSystem
+import akka.io.IO
+import spray.can.Http
 
 
 /**
  * Fetch some info from the web.
- * ack: http://dispatch.databinder.net/Dispatch.html
+ * ack: spray.io Boot example
  */
 object Go extends App {
-  import dispatch.Defaults.executor
+  // we need an ActorSystem to host our application in
+  implicit val system = ActorSystem("on-spray-can")
 
-  // http://htmlcleaner.sourceforge.net/javause.php
-  val svc = url("http://challonge.com/ARLOPMS")
-  val pg = Http(svc OK as.String)
-  for (content <- pg) {
-    for (m <- BracketDoc.eachMatch(content)) {
-      println("match top: " + m.top)
-      println("match bottom: " + m.bottom)
-      println("match winner: " + m.winner)
+  // create and start our service actor
+  //val service = system.actorOf(Props[MyServiceActor], "demo-service")
+  val service = system.actorOf(BracketInfoActor.props(IO(Http)), "demo-service")
 
-    }
-    println("Done! content length:" + content.length())
-  }
+
+  // start a new HTTP server on port 8080 with our service actor as the handler
+  IO(Http) ! Http.Bind(service, interface = "localhost", port = 8080)
 }

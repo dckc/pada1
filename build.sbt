@@ -1,16 +1,28 @@
 name := "pada1"
 
+// organization := "com.madmode"
+
 version := "1.0"
-
-// We get these from http://search.maven.org/ .
-
-libraryDependencies += "net.databinder.dispatch" % "dispatch-core_2.10" % "0.11.1"
 
 libraryDependencies += "org.jsoup" % "jsoup" % "1.7.3"
 
-// per http://code.google.com/p/simple-build-tool/wiki/WebApplications
-// and http://code.google.com/p/simple-build-tool/wiki/WebApplicationExample
+// per spray.io
 
-// val jetty6 = "org.mortbay.jetty" % "jetty" % "6.1.14" % "test"
+scalaVersion := "2.10.3"
 
-libraryDependencies += "javax.servlet" % "servlet-api" % "2.5" % "provided"
+scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
+
+libraryDependencies ++= {
+  val akkaV = "2.1.4"
+  val sprayV = "1.1.1"
+  Seq(
+    "io.spray" % "spray-can" % sprayV,
+    "io.spray" % "spray-routing" % sprayV,
+    "io.spray" % "spray-testkit" % sprayV % "test",
+    "com.typesafe.akka" %% "akka-actor" % akkaV,
+    "com.typesafe.akka" %% "akka-testkit" % akkaV % "test",
+    "org.specs2" %% "specs2" % "2.2.3" % "test"
+  )
+}
+
+Revolver.settings
