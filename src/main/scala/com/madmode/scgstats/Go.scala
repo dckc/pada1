@@ -22,5 +22,5 @@ object Go extends App {
 
   // start a new HTTP server on port 8080 with our service actor as the handler
   val port = Properties.envOrElse("PORT", "8080").toInt
-  IO(Http) ! Http.Bind(service, interface = "localhost", port = port)
+  IO(Http) ! Http.Bind(service, interface = "0.0.0.0", port = port)
 }
