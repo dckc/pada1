@@ -6,11 +6,14 @@ import akka.pattern.ask
 import akka.util.Timeout
 import spray.http.HttpMethods.GET
 import spray.http.MediaTypes._
-import spray.http.{StatusCodes, _}
+import spray.http.{StatusCodes, HttpRequest, HttpResponse, HttpEntity, Uri}
 import spray.routing._
 
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
+import reflect.ClassTag
+
+// http://stackoverflow.com/a/15585940/846824
 
 
 // recommended practice for Actor constructor args
@@ -44,6 +47,8 @@ class BracketInfoActor(aWebClient: ActorRef) extends Actor with BracketInfo {
  * Web page derived from tournament bracket
  */
 trait BracketInfo extends HttpService {
+
+  import scala.concurrent.ExecutionContext.Implicits.global
   private implicit val timeout: Timeout = Timeout(15.seconds)
 
   def myWebClient: ActorRef
@@ -61,7 +66,7 @@ trait BracketInfo extends HttpService {
 
           val getTourney: HttpRequest = HttpRequest(GET, Uri("http://challonge.com/" + tourneyName))
 
-          onComplete((myWebClient ? getTourney).mapTo[HttpResponse]) {
+          onComplete((myWebClient ask getTourney).mapTo[HttpResponse]) {
             case Success(r) => r.status match {
               case StatusCodes.OK => respondWithMediaType(`text/plain`) {
                 complete(describeMatches(r.entity))
@@ -76,9 +81,6 @@ trait BracketInfo extends HttpService {
     }
 
   def describeMatches(pg: HttpEntity): String = {
-    val lines = for (m <- BracketDoc.eachMatch(pg.asString))
-    yield "match top: " + m.top + " match bottom: " + m.bottom + " match winner: " + m.winner
-
-    lines.mkString("\n")
+    BracketDoc.eachMatch(pg.asString).mkString("\n")
   }
 }
