@@ -71,7 +71,7 @@ trait BracketInfo extends HttpService {
                 complete(describeMatches(r.entity))
               }
               case _ => complete(StatusCodes.BadRequest,
-                s"bad tourney: ${tourneyName} => ${r.status}: ${r.message}}")
+                s"bad tourney: ${tourneyName} => ${r.status}: ${r.status.reason}")
             }
             case Failure(ex) => complete(StatusCodes.InternalServerError, s"An error occurred: ${ex.getMessage}")
           }
