@@ -7,9 +7,9 @@ seq(SbtStartScript.startScriptForClassesSettings: _*)
 
 name := "pada1"
 
-// organization := "com.madmode"
+organization := "com.madmode"
 
-version := "1.0"
+version := "0.1.2"
 
 libraryDependencies += "org.jsoup" % "jsoup" % "1.7.3"
 
