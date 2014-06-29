@@ -1,3 +1,10 @@
+// heroku
+
+import com.typesafe.sbt.SbtStartScript
+
+seq(SbtStartScript.startScriptForClassesSettings: _*)
+
+
 name := "pada1"
 
 // organization := "com.madmode"

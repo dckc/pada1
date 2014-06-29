@@ -1,5 +1,7 @@
 package com.madmode.scgstats
 
+import util.Properties
+
 import akka.actor.ActorSystem
 import akka.io.IO
 import spray.can.Http
@@ -19,5 +21,6 @@ object Go extends App {
 
 
   // start a new HTTP server on port 8080 with our service actor as the handler
-  IO(Http) ! Http.Bind(service, interface = "localhost", port = 8080)
+  val port = Properties.envOrElse("PORT", "8080").toInt
+  IO(Http) ! Http.Bind(service, interface = "localhost", port = port)
 }
