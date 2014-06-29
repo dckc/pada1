@@ -1,14 +1,17 @@
 package com.madmode.scgstats
 
-import scala.util.{Try, Success, Failure}
-
+import akka.actor.{Actor, ActorRef, Props}
 import akka.event.Logging
-import akka.actor.{ActorRef, Props, Actor}
+import akka.pattern.ask
+import akka.util.Timeout
+import spray.http.HttpMethods.GET
+import spray.http.MediaTypes._
+import spray.http.{StatusCodes, _}
 import spray.routing._
-import spray.routing.directives.ParameterDirectives.parameter
-import spray.http._
-import spray.http.StatusCodes
-import MediaTypes._
+
+import scala.concurrent.duration._
+import scala.util.{Failure, Success}
+
 
 // recommended practice for Actor constructor args
 // http://doc.akka.io/docs/akka/snapshot/scala/actors.html#Recommended_Practices
@@ -41,16 +44,6 @@ class BracketInfoActor(aWebClient: ActorRef) extends Actor with BracketInfo {
  * Web page derived from tournament bracket
  */
 trait BracketInfo extends HttpService {
-
-  import scala.concurrent.Future
-  import scala.concurrent.ExecutionContext.Implicits.global
-
-  import akka.util.Timeout
-  import scala.concurrent.duration._
-  import HttpMethods.GET
-  import akka.pattern.ask
-
-
   private implicit val timeout: Timeout = Timeout(15.seconds)
 
   def myWebClient: ActorRef

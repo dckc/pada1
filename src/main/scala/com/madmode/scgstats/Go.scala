@@ -1,10 +1,10 @@
 package com.madmode.scgstats
 
-import util.Properties
-
 import akka.actor.ActorSystem
 import akka.io.IO
 import spray.can.Http
+
+import scala.util.Properties
 
 
 /**
