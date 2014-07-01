@@ -19,7 +19,17 @@ Authors:
 
 ## Development Notes
 
-See:
+Contents:
+
+ - build.sbt -- project description and dependencies
+ - project -- more sbt stuff
+ - Procfile -- heroku deployment descriptor
+ - system.properties -- also required for heroku deployment
+ - src -- scala source code (and .html resources etc.)
+          especially class `com.madmode.scgstats.Go`
+          under `src/main/scala`.
+
+See also:
   - [A Start in the Craft of Quality Software Development][1]
 
 [1]: http://www.madmode.com/2014/06-pada1.html
