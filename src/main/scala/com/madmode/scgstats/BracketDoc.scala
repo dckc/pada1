@@ -36,8 +36,8 @@ object BracketDoc {
 
     Play(playerName = participant.text(),
       participantId = numeral(participant.attr("data-participant_id")),
-      score = getInt(s"${which}_score"),
-      seed = getInt(s"${which}_seed"),
+      score = getInt(s".${which}_score"),
+      seed = getInt(s".${which}_seed"),
       win = !aPlay.select(".winner").asScala.isEmpty,
       round = numeral(participant.attr("data-round")))
   }

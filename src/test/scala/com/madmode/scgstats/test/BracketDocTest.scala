@@ -1,6 +1,7 @@
 package com.madmode.scgstats.test
 
 import com.madmode.scgstats._
+
 import org.scalatest.{FlatSpec, Matchers}
 
 
@@ -47,10 +48,11 @@ class BracketDocTest extends FlatSpec with Matchers {
       </td>"""
 
   "A simple BracketDoc" should "have one match with a couple players" in {
-    // actually the 0, 0 are wrong...
+
     BracketDoc.eachMatch(doc1).head shouldBe Match(
-      Map(Top -> Play("Deezus", 15741900, 0, 0, true, 1),
-        Bottom -> Play("Lumia", 15742643, 0, 0, false, 1)))
+      Map(Top -> Play("Deezus", 15741900, 2, 8, true, 1),
+        Bottom -> Play("Lumia", 15742643, 0, 25, false, 1)))
+
 
   }
 }
