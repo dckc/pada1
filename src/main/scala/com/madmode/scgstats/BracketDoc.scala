@@ -9,7 +9,7 @@ import org.jsoup.Jsoup
  * Extract structure of HTML bracket document.
  */
 object BracketDoc {
-  def eachMatch(content: String): Iterable[Match] = {
+  def eachMatch(content: String): Seq[Match] = {
     val doc = Jsoup.parse(content)
 
     for {
@@ -23,6 +23,29 @@ object BracketDoc {
         Bottom -> scrapePlay(aMatch.children(), Bottom)))
     }
   }
+
+  def playerList(db: Seq[Match]) = {
+    for { m <- db;
+          (pos, play) <- m.players }
+      yield play.playerName
+    }
+
+  def winLossRecord(who: String, db: Seq[Match]) : (Int, Int) = {
+    val wins =
+      for { m <- db;
+            (pos, play) <- m.players
+            if play.win == true && play.playerName == who }
+      yield play
+    val losses =
+      for { m <- db;
+            (pos, play) <- m.players
+            if play.win == false && play.playerName == who }
+      yield play
+    (wins.size, losses.size)
+
+  }
+
+
 
   def scrapePlay(aMatch: Elements, which: Position): Play = {
     val aPlay = aMatch.select(s".match_${which}_half")
