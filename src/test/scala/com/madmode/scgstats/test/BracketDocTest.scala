@@ -2,6 +2,9 @@
  * adapted from [ScalaTest quick start][1]. See
  * also [ScalaTest support in the IntelliJ Scala plugin][2].
  *
+ * I'm not quite sure how this "... should ..." syntax works. I'm just
+ * using it, monkey-see-monkey-do style, from the ScalaTest docs.
+ *
  * [1]: http://www.scalatest.org/quick_start
  * [2]: http://www.scalatest.org/user_guide/using_scalatest_with_intellij
  */
@@ -10,28 +13,23 @@ package com.madmode.scgstats.test
 import com.madmode.scgstats._
 import org.jsoup.Jsoup
 
-import org.scalatest._
+import org.scalatest.{FlatSpec, Matchers}
 
 import scala.util.{Success}
 
 
-// class X extends Y is just like Java
-// class X extends Y with Z is using scala traits;
-// it's a little like implements InterfaceX in Java,
-// but scala traits can bring in implementation code
-// as well as just method declarations.
 class BracketDocTest extends FlatSpec with Matchers {
   // triple-quotes are scala syntax for multi-line strings
   val txt1 = """
       <html>
         <head><title>ABC</title></head>
-        <body class='nom-nom'>abc...</body>
+        <body class='nom-nom'>abc...
+        <p class="nom-nom">def...</p>
+        </body>
       </html>
     """
 
 
-  // I'm not quite sure how this "... should ..." syntax works. I'm just
-  // using it, monkey-see-monkey-do style, from the ScalaTest docs.
   "An HTML document" should "have text and tags (with attributes) that delimit elements" in {
     val doc = Jsoup.parse(txt1)
 
@@ -52,13 +50,14 @@ class BracketDocTest extends FlatSpec with Matchers {
     val doc = Jsoup.parse(txt1)
 
     // query by tag name
-    doc.select("body").text() shouldBe "abc..."
+    doc.select("body").size() shouldBe 1
 
     // query by class attribute
-    doc.select(".nom-nom").text() shouldBe "abc..."
+    doc.select(".nom-nom").text() should include ("abc")
+    doc.select(".nom-nom").size() shouldBe 2
 
     // query by tag name and class attribute
-    doc.select("body.nom-nom").text() shouldBe "abc..."
+    doc.select("p.nom-nom").text() shouldBe "def..."
 
   }
 
