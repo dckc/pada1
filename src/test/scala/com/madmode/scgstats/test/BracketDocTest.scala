@@ -15,7 +15,7 @@ import org.jsoup.Jsoup
 
 import org.scalatest.{FlatSpec, Matchers}
 
-import scala.util.{Success}
+import scala.util.{Success, Failure}
 
 
 class BracketDocTest extends FlatSpec with Matchers {
@@ -100,6 +100,23 @@ class BracketDocTest extends FlatSpec with Matchers {
     val aMatchHalf = Jsoup.parse(matchHalfMarkup).select(s"div.match_${position}_half")
 
     BracketDoc.selectParticipant(aMatchHalf) shouldBe ("Deezus", Success(15741900), Success(1))
+  }
+
+  "Querying for an Int" should "either succeed or fail" in {
+    val winlose = Jsoup.parse( """
+    <div><b>xyz</b><em>23</em></div>""").select("div")
+
+    val take1 = BracketDoc.selectInt(winlose, "div")
+
+    (take1 match {
+      case Failure(ex) => ex.toString()
+    }) should include("NumberFormatException")
+
+    val take2 = BracketDoc.selectInt(winlose, "em")
+    (take2 match {
+      case Success(i) => i
+    }) shouldBe 23
+
   }
 
   "Match half elements" should "have a round, player, score, and win" in {

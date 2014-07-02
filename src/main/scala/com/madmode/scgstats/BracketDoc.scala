@@ -75,7 +75,6 @@ object BracketDoc {
   /**
    * Select text and try to convert to Int.
    * @return Success(anInt) or Failure(whynot)
-   * TODO: explain Try[T] in a test.
    */
   def selectInt(target: Elements, selector: String): Try[Int] = {
     Try(target.select(selector).text().toInt)
