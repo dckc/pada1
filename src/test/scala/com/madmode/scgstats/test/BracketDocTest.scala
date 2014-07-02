@@ -1,8 +1,9 @@
 package com.madmode.scgstats.test
 
 import com.madmode.scgstats._
+import org.jsoup.Jsoup
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest._
 
 
 /**
@@ -13,6 +14,29 @@ import org.scalatest.{FlatSpec, Matchers}
  * [2]: http://www.scalatest.org/user_guide/using_scalatest_with_intellij
  */
 class BracketDocTest extends FlatSpec with Matchers {
+
+  "An HTML document" should "have text and tags (with attributes) that delimit elements" in {
+
+    val doc = Jsoup.parse(
+      """
+      <html>
+        <head><title>ABC</title></head>
+        <body class='nom-nom'>abc...</body>
+      </html>
+      """)
+
+    // I'm not quite sure how this "should include" syntax works. I got it from
+    // http://www.scalatest.org/user_guide/using_matchers#checkingStrings
+    doc.text() should include ("ABC")
+    doc.text() should include ("abc")
+
+    val htmlElt = doc.children().first()
+    val bodyElt = htmlElt.children().get(1)  // counting from 0: head, body
+    bodyElt.tagName() shouldBe "body"
+    bodyElt.attr("class") shouldBe "nom-nom"
+
+  }
+
   "An empty BracketDoc" should "have an empty sequence of matches" in {
     BracketDoc.eachMatch("").isEmpty shouldBe true
   }
