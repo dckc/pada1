@@ -82,9 +82,9 @@ trait BracketInfo extends HttpService {
 
   def describeMatches(pg: HttpEntity): String = {
     val em = BracketDoc.eachMatch(pg.asString)
-    val tags = BracketDoc.playerList(em).sorted.distinct
-    val setCount = for {tag <- tags} yield (tag, BracketDoc.winLossRecord(tag, em))
-      setCount.mkString("\n")
-
+    val db = new GameDB(em)
+    val tags = db.playerList().sorted.distinct
+    val setCount = for {tag <- tags} yield (tag, db.winLossRecord(tag))
+    setCount.mkString("\n")
   }
 }
