@@ -33,3 +33,9 @@ See also:
   - [A Start in the Craft of Quality Software Development][1]
 
 [1]: http://www.madmode.com/2014/06-pada1.html
+
+<div>
+<a href="https://travis-ci.org/dckc/pada1/builds">
+ <img alt="build status" src="https://travis-ci.org/dckc/pada1.svg?branch=master"/>
+</a>
+</div>
