@@ -164,9 +164,11 @@ class BracketDocTest extends FlatSpec with Matchers {
 
   "A simple BracketDoc" should "have one match with a couple players" in {
 
-    BracketDoc.eachMatch(txt2).head shouldBe Match(1,
-      Map(Top -> (Player("Deezus", 8), 2),
-        Bottom -> (Player("Lumia", 25), 0)), Top)
+    BracketDoc.eachMatch(txt2).head shouldBe Match(
+      round = 1,
+      scores = Map(Top -> (Player("Deezus", 8), 2),
+                   Bottom -> (Player("Lumia", 25), 0)),
+      winner = Player("Deezus", 8))
 
 
   }

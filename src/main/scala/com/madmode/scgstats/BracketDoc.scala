@@ -8,7 +8,7 @@ import scala.util.{Try, Success, Failure}
 
 case class Match(round: Int,
                  scores: Map[Position, (Player, Int)],
-                 winner: Position)
+                 winner: Player)
 
 case class Player(tag: String, seed: Int)
 
@@ -51,8 +51,8 @@ object BracketDoc {
 
       val scores: Map[Position, (Player, Int)] = Map() ++ positions.zip(eachScore)
       val winner = eachWin match {
-        case List(true, _) => Top
-        case _ => Bottom
+        case List(true, _) => scores(Top)._1
+        case _ => scores(Bottom)._1
       }
       val round = eachRound match {
         case List(r, _) => r
@@ -81,7 +81,7 @@ object BracketDoc {
 
   def selectMatchHalf(aMatch: Elements, which: Position): Try[(Int, (Player, Int), Boolean)] = {
     val aMatchHalf = aMatch.select(s".match_${which}_half")
-    val win = !aMatchHalf.select(".winner").asScala.isEmpty
+    val win = aMatchHalf.select(".winner").asScala.nonEmpty
 
     val (tag, tryRound) = selectParticipant(aMatchHalf)
 
