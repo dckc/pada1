@@ -37,7 +37,7 @@ object BracketDoc {
       aMatch <- row.select("td.core").asScala
       if !aMatch.select(".participant-present").isEmpty()
     } yield {
-      val positions = List(Top, Bottom)
+      val positions: List[Position] = List.apply(Top, Bottom) // TODO: test to explain .apply shortcut
       val halves = for {
         pos <- positions
         // TODO: test to explain pattern matching in for
@@ -50,11 +50,11 @@ object BracketDoc {
       val (eachRound, eachScore, eachWin) = halves.unzip3
 
       val scores: Map[Position, (Player, Int)] = Map() ++ positions.zip(eachScore)
-      val winner = eachWin match {
+      val winner: Player = eachWin match {
         case List(true, _) => scores(Top)._1
         case _ => scores(Bottom)._1
       }
-      val round = eachRound match {
+      val round: Int = eachRound match {
         case List(r, _) => r
         case _ => 0 // TODO: skip match if we didn't find any halves
       }
@@ -64,9 +64,9 @@ object BracketDoc {
   }
 
   def selectParticipant(aMatchHalf: Elements): (String, Try[Int]) = {
-    val participant = aMatchHalf.select(".participant-present")
-    val playerTag = participant.text()
-    val round = Try(participant.attr("data-round").toInt)
+    val participantElt: Elements = aMatchHalf.select(".participant-present")
+    val playerTag: String = participantElt.text()
+    val round: Try[Int] = Try(participantElt.attr("data-round").toInt)
 
     (playerTag, round)
   }
@@ -80,13 +80,13 @@ object BracketDoc {
   }
 
   def selectMatchHalf(aMatch: Elements, which: Position): Try[(Int, (Player, Int), Boolean)] = {
-    val aMatchHalf = aMatch.select(s".match_${which}_half")
-    val win = aMatchHalf.select(".winner").asScala.nonEmpty
+    val aMatchHalf: Elements = aMatch.select(s".match_${which}_half")
+    val win: Boolean = aMatchHalf.select(".winner").asScala.nonEmpty
 
     val (tag, tryRound) = selectParticipant(aMatchHalf)
 
-    val trySeed = selectInt(aMatchHalf, s".${which}_seed")
-    val tryScore = selectInt(aMatchHalf, s".${which}_score")
+    val trySeed: Try[Int] = selectInt(aMatchHalf, s".${which}_seed")
+    val tryScore: Try[Int] = selectInt(aMatchHalf, s".${which}_score")
 
     for {
       round <- tryRound
@@ -100,18 +100,20 @@ object BracketDoc {
 class GameDB(db: Seq[Match]) {
   // TODO: move these to db object with players, matches tables
   def playerList() = {
-    for { m <- db;
+    val rawList: Seq[String] = for { m <- db;
           (pos, (player, _)) <- m.scores }
     yield player.tag
+
+    rawList.sorted.distinct
   }
 
   def winLossRecord(who: String) : (Int, Int) = {
-    val wins =
+    val wins: Seq[Match] =
       for { m <- db;
             (pos, (player, _)) <- m.scores
             if pos == m.winner && player.tag == who }
       yield m
-    val losses =
+    val losses: Seq[Match] =
       for { m <- db;
             (pos, (player, _)) <- m.scores
             if pos != m.winner && player.tag == who }
