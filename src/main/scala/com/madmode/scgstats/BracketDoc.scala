@@ -10,7 +10,7 @@ case class Match(round: Int,
                  scores: Map[Position, (Player, Int)],
                  winner: Position)
 
-case class Player(tag: String, participantId: Try[Int], seed: Int)
+case class Player(tag: String, seed: Int)
 
 sealed abstract class Position
 
@@ -63,13 +63,12 @@ object BracketDoc {
     }
   }
 
-  def selectParticipant(aMatchHalf: Elements): (String, Try[Int], Try[Int]) = {
+  def selectParticipant(aMatchHalf: Elements): (String, Try[Int]) = {
     val participant = aMatchHalf.select(".participant-present")
     val playerTag = participant.text()
-    val participantId = Try(participant.attr("data-participant_id").toInt)
     val round = Try(participant.attr("data-round").toInt)
 
-    (playerTag, participantId, round)
+    (playerTag, round)
   }
 
   /**
@@ -84,7 +83,7 @@ object BracketDoc {
     val aMatchHalf = aMatch.select(s".match_${which}_half")
     val win = !aMatchHalf.select(".winner").asScala.isEmpty
 
-    val (tag, tryId, tryRound) = selectParticipant(aMatchHalf)
+    val (tag, tryRound) = selectParticipant(aMatchHalf)
 
     val trySeed = selectInt(aMatchHalf, s".${which}_seed")
     val tryScore = selectInt(aMatchHalf, s".${which}_score")
@@ -93,7 +92,7 @@ object BracketDoc {
       round <- tryRound
       seed <- trySeed
       score <- tryScore
-    } yield (round, (Player(tag, tryId, seed), score), win)
+    } yield (round, (Player(tag, seed), score), win)
   }
 }
 

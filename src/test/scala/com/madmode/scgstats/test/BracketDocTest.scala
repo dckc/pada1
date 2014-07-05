@@ -99,7 +99,7 @@ class BracketDocTest extends FlatSpec with Matchers {
     val position = Top
     val aMatchHalf = Jsoup.parse(matchHalfMarkup).select(s"div.match_${position}_half")
 
-    BracketDoc.selectParticipant(aMatchHalf) shouldBe ("Deezus", Success(15741900), Success(1))
+    BracketDoc.selectParticipant(aMatchHalf) shouldBe ("Deezus", Success(1))
   }
 
   "Querying for an Int" should "either succeed or fail" in {
@@ -123,7 +123,7 @@ class BracketDocTest extends FlatSpec with Matchers {
     val position = Top
     val aMatchHalf = Jsoup.parse(matchHalfMarkup).select(s"div.match_${position}_half")
 
-    BracketDoc.selectMatchHalf(aMatchHalf, Top) shouldBe Success((1,(Player("Deezus",Success(15741900),8),2),true))
+    BracketDoc.selectMatchHalf(aMatchHalf, Top) shouldBe Success((1,(Player("Deezus",8),2),true))
   }
 
   "An empty BracketDoc" should "have an empty sequence of matches" in {
@@ -165,8 +165,8 @@ class BracketDocTest extends FlatSpec with Matchers {
   "A simple BracketDoc" should "have one match with a couple players" in {
 
     BracketDoc.eachMatch(txt2).head shouldBe Match(1,
-      Map(Top -> (Player("Deezus", Success(15741900), 8), 2),
-        Bottom -> (Player("Lumia", Success(15742643), 25), 0)), Top)
+      Map(Top -> (Player("Deezus", 8), 2),
+        Bottom -> (Player("Lumia", 25), 0)), Top)
 
 
   }
