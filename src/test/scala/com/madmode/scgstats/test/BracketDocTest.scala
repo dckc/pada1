@@ -172,4 +172,60 @@ class BracketDocTest extends FlatSpec with Matchers {
 
 
   }
+
+  val sampleRun = """
+                    |<td class='core' id='match_qtip_22380234_' style='padding:0'>
+                    |    <div class='match_top_half'>
+                    |      <div class='top_seed'>3</div>
+                    |      <div class='top_score winner'>2</div>
+                    |      <div class='inner_content no_user p15741834 participant-present' data-participant_id='15741834' data-round='1'><span style='' title='SCG | Zinth'>SCG | Zinth</span></div>
+                    |    </div>
+                    |    <div class='match_bottom_half'>
+                    |      <div class='bottom_seed'>30</div>
+                    |      <div class='bottom_score'>0</div>
+                    |      <div class='inner_content no_user p15745181 participant-present' data-participant_id='15745181' data-round='1'><span style='' title='Nabi'>Nabi</span></div>
+                    |    </div>
+                    |    <div class='shadow'></div>
+                    |  </td>
+                    |
+                    |    <td class='core' id='match_qtip_22380258_' style='padding:0'>
+                    |      <div class='match_top_half'>
+                    |        <div class='top_seed'>30</div>
+                    |        <div class='top_score winner'>2</div>
+                    |        <div class='inner_content no_user p15745181 participant-present' data-participant_id='15745181' data-round='-1'><span style='' title='Nabi'>Nabi</span></div>
+                    |      </div>
+                    |      <div class='match_bottom_half'>
+                    |        <div class='bottom_seed'>19</div>
+                    |        <div class='bottom_score'>0</div>
+                    |        <div class='inner_content no_user p15742579 participant-present' data-participant_id='15742579' data-round='-1'><span style='' title='Mo Duke'>Mo Duke</span></div>
+                    |      </div>
+                    |      <div class='shadow'></div>
+                    |    </td>
+                    |
+                    |    <td class='core' id='match_qtip_22380266_' style='padding:0'>
+                    |      <div class='match_top_half'>
+                    |        <div class='top_seed'>9</div>
+                    |        <div class='top_score winner'>2</div>
+                    |        <div class='inner_content no_user p15741911 participant-present' data-participant_id='15741911' data-round='-2'><span style='' title='SCG | Dad'>SCG | Dad</span></div>
+                    |      </div>
+                    |      <div class='match_bottom_half'>
+                    |        <div class='bottom_seed'>30</div>
+                    |        <div class='bottom_score'>0</div>
+                    |        <div class='inner_content no_user p15745181 participant-present' data-participant_id='15745181' data-round='-2'><span style='' title='Nabi'>Nabi</span></div>
+                    |      </div>
+                    |      <div class='shadow'></div>
+                    |    </td>
+  """
+
+// Process:
+// Find all matches with participant "Nabi" (include a match where "Nabi" did not participate to check that this is done properly)
+// Determine the winner and the loser of that match (edit eachMatch method?)
+// Determine who "Nabi" either beat or lost to (if/else statements in Scala?)
+
+  "A player bracket run" should "show who the player won or lost to in every match he/she played." in {
+
+
+
+
+  }
 }
