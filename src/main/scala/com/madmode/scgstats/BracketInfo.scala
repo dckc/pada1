@@ -69,7 +69,7 @@ trait BracketInfo extends HttpService {
           onComplete((myWebClient ask getTourney).mapTo[HttpResponse]) {
             case Success(r) => r.status match {
               case StatusCodes.OK => respondWithMediaType(`text/plain`) {
-                complete(describeMatches(r.entity))
+                complete(BracketInfo.describeMatches(BracketDoc.eachMatch(r.entity.asString)))
               }
               case _ => complete(StatusCodes.BadRequest,
                 s"bad tourney: ${tourneyName} => ${r.status}: ${r.status.reason}")
@@ -80,9 +80,11 @@ trait BracketInfo extends HttpService {
       }
     }
 
-  def describeMatches(pg: HttpEntity): String = {
-    val em = BracketDoc.eachMatch(pg.asString)
-    val db = new GameDB(em)
+}
+
+object BracketInfo {
+  def describeMatches(matches: Seq[Match]): String = {
+    val db = new GameDB(matches)
     val tags = db.playerList()
     val setCount = for {tag <- tags} yield (tag, db.winLossRecord(tag))
     setCount.mkString("\n")
