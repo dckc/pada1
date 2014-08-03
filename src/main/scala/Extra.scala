@@ -18,7 +18,7 @@ object Extra extends App {
     val allSets = doc.select("td.core").asScala
     var match_num: Int = 0
 
-    for (set <- allSets) {
+    /* for (set <- allSets) {
       match_num += 1
       val setInfo = set.select(".participant-present").first()
       val dataRound = setInfo.attr("data-round")
@@ -39,14 +39,47 @@ object Extra extends App {
       val wSeed = set.select("." + winnerHalf + "_seed").text()
       val lSeed = set.select("." + loserHalf + "_seed").text()
 
-      println(wSeed)
-      println(lSeed)
-      println("")
 
+
+
+    } */
+
+    /* def FindStartDate (tourneyAddress: String) = {
+      import dispatch._, Defaults._
+      import dispatch.url
+
+      val logAddress = tourneyAddress + "/log"
+
+      val svc2 = url(logAddress)
+      val pg2 = Http(svc2 OK as.String)
+
+      for (content <- pg2) yield {
+        val doc2 = Jsoup.parse(content)
+        val timestamps = doc2.select("tr")
+        println(timestamps.text())
+
+        val theRowIWant = timestamps.asScala.find(row => row.text().contains("The organizer started this tournament."))
+        theRowIWant
+      }
 
     }
 
+    for (dateOf <- FindStartDate("http://challonge.com/dzcscgpm3")){
+      println(dateOf)
+    }*/
 
-    // doc.select("td.core").text()
+    val tourney = doc.select("div#title").first().text()
+    val host = doc.select(".host").select("a").text()
+    val tourneyType = doc.select(".list .full-width").text().trim().split(" ")(0)
+    val entrants = tourneyType.trim().split(" ")(0)
+
+    println(tourneyType)
+
+
+
+
+
+
+
   }
 }
