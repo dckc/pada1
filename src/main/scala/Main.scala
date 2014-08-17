@@ -58,12 +58,20 @@ object Main extends App {
         val isTopWinner = top.attr("class").contains("winner")
         val winnerHalf = if (isTopWinner) "top" else "bottom"
         val loserHalf = if (!isTopWinner) "top" else "bottom"
+
         var wTag = set.select(".match_" + winnerHalf + "_half").select("span").text()
-        if (wTag.contains(",")) wTag = (wTag.split(",")(0) + ";" + wTag.split(",")(1))
+        if (wTag.contains(",")) wTag = wTag.split(",")(0) + ";" + wTag.split(",")(1)
         var lTag = set.select(".match_" + loserHalf + "_half").select("span").text()
-        if (lTag.contains(",")) lTag = (lTag.split(",")(0) + ";" + lTag.split(",")(1))
-        val wGamesWon = set.select("." + winnerHalf + "_score").text()
-        val lGamesWon = set.select("." + loserHalf + "_score").text()
+        if (lTag.contains(",")) lTag = lTag.split(",")(0) + ";" + lTag.split(",")(1)
+        var wGamesWon = set.select("." + winnerHalf + "_score").text()
+        if (wGamesWon.equals("✓")) wGamesWon = "0"
+        var lGamesWon = set.select("." + loserHalf + "_score").text()
+        if (lGamesWon.equals("")) lGamesWon = "0"
+        if (lGamesWon.toInt <= -1)
+        {
+          wTag = "DQ/Forfeit"
+          lTag = "DQ/Forfeit"
+        }
         val wSeed = set.select("." + winnerHalf + "_seed").text()
         val lSeed = set.select("." + loserHalf + "_seed").text()
 
@@ -134,27 +142,8 @@ object Main extends App {
 
   }
 
-  gatherData("sappfe")
+  gatherData("sktarpm1")
 
   println("Done.")
 
 }
-
-
-
-// ****Attempted to fnd the date; turns out to be pretty tricky. We'll come back to this later.**** \\
-
-/* def FindStartDate (tourneyAddress: String) : String = {
-import dispatch._, Defaults._
-import dispatch.url
-
-val logAddress = tourneyAddress + "/log"
-
-val svc2 = url(logAddress)
-val pg2 = Http(svc2 OK as.String)
-
-for (content <- pg2) {
-  val doc2 = Jsoup.parse(content)
-  val startDate = doc2.select()
-}
-} */
