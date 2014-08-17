@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="bdp3"
+		module="bdp3$sources_javadoc_2.10"
+		revision="1.0"
+		conf="compile-internal"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20140802205636"/>
+	<dependencies>
+		<module organisation="net.databinder.dispatch" name="dispatch-core_2.10">
+			<revision name="0.11.1" status="release" pubdate="20140504143359" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://dispatch.databinder.net/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="1">
+				<license name="LGPL v3" url="http://www.gnu.org/licenses/lgpl.txt"/>
+				<metadata-artifact status="no" details="" size="2860" time="0" location="C:\Users\Brennan\.ivy2\cache\net.databinder.dispatch\dispatch-core_2.10\ivy-0.11.1.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-core_2.10/0.11.1/dispatch-core_2.10-0.11.1.pom"/>
+				<caller organisation="bdp3" name="bdp3$sources_javadoc_2.10" conf="optional, compile, provided, compile-internal" rev="0.11.1" rev-constraint-default="0.11.1" rev-constraint-dynamic="0.11.1" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="dispatch-core_2.10" type="jar" ext="jar" status="no" details="" size="253594" time="0" location="C:\Users\Brennan\.ivy2\cache\net.databinder.dispatch\dispatch-core_2.10\jars\dispatch-core_2.10-0.11.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-core_2.10/0.11.1/dispatch-core_2.10-0.11.1.jar"/>
+					</artifact>
+					<artifact name="dispatch-core_2.10" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="14964" time="392" location="C:\Users\Brennan\.ivy2\cache\net.databinder.dispatch\dispatch-core_2.10\srcs\dispatch-core_2.10-0.11.1-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-core_2.10/0.11.1/dispatch-core_2.10-0.11.1-sources.jar"/>
+					</artifact>
+					<artifact name="dispatch-core_2.10" type="doc" ext="jar" extra-classifier="javadoc" status="successful" details="" size="565893" time="595" location="C:\Users\Brennan\.ivy2\cache\net.databinder.dispatch\dispatch-core_2.10\docs\dispatch-core_2.10-0.11.1-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-core_2.10/0.11.1/dispatch-core_2.10-0.11.1-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.ning" name="async-http-client">
+			<revision name="1.8.8" status="release" pubdate="20140428041702" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/AsyncHttpClient/async-http-client" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="3">
+				<license name="Apache License 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+				<metadata-artifact status="no" details="" size="6808" time="0" location="C:\Users\Brennan\.ivy2\cache\com.ning\async-http-client\ivy-1.8.8.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/ning/async-http-client/1.8.8/async-http-client-1.8.8.pom"/>
+				<caller organisation="bdp3" name="bdp3$sources_javadoc_2.10" conf="optional, compile, provided, compile-internal" rev="1.8.8" rev-constraint-default="1.8.8" rev-constraint-dynamic="1.8.8" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="async-http-client" type="doc" ext="jar" extra-classifier="javadoc" status="successful" details="" size="1255564" time="918" location="C:\Users\Brennan\.ivy2\cache\com.ning\async-http-client\docs\async-http-client-1.8.8-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/ning/async-http-client/1.8.8/async-http-client-1.8.8-javadoc.jar"/>
+					</artifact>
+					<artifact name="async-http-client" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="308916" time="501" location="C:\Users\Brennan\.ivy2\cache\com.ning\async-http-client\srcs\async-http-client-1.8.8-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/ning/async-http-client/1.8.8/async-http-client-1.8.8-sources.jar"/>
+					</artifact>
+					<artifact name="async-http-client" type="jar" ext="jar" status="no" details="" size="526740" time="0" location="C:\Users\Brennan\.ivy2\cache\com.ning\async-http-client\jars\async-http-client-1.8.8.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/ning/async-http-client/1.8.8/async-http-client-1.8.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.slf4j" name="slf4j-api">
+			<revision name="1.7.5" status="release" pubdate="20130325155215" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.slf4j.org" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="5">
+				<metadata-artifact status="no" details="" size="4514" time="0" location="C:\Users\Brennan\.ivy2\cache\org.slf4j\slf4j-api\ivy-1.7.5.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.pom"/>
+				<caller organisation="bdp3" name="bdp3$sources_javadoc_2.10" conf="optional, compile, provided, compile-internal" rev="1.7.5" rev-constraint-default="1.7.5" rev-constraint-dynamic="1.7.5" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="slf4j-api" type="doc" ext="jar" extra-classifier="javadoc" status="successful" details="" size="183075" time="431" location="C:\Users\Brennan\.ivy2\cache\org.slf4j\slf4j-api\docs\slf4j-api-1.7.5-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5-javadoc.jar"/>
+					</artifact>
+					<artifact name="slf4j-api" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="47186" time="344" location="C:\Users\Brennan\.ivy2\cache\org.slf4j\slf4j-api\srcs\slf4j-api-1.7.5-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5-sources.jar"/>
+					</artifact>
+					<artifact name="slf4j-api" type="jar" ext="jar" status="no" details="" size="26084" time="0" location="C:\Users\Brennan\.ivy2\cache\org.slf4j\slf4j-api\jars\slf4j-api-1.7.5.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty">
+			<revision name="3.9.0.Final" status="release" pubdate="20131222045540" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://netty.io/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="4">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="6485" time="0" location="C:\Users\Brennan\.ivy2\cache\io.netty\netty\ivy-3.9.0.Final.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/io/netty/netty/3.9.0.Final/netty-3.9.0.Final.pom"/>
+				<caller organisation="bdp3" name="bdp3$sources_javadoc_2.10" conf="optional, compile, provided, compile-internal" rev="3.9.0.Final" rev-constraint-default="3.9.0.Final" rev-constraint-dynamic="3.9.0.Final" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="netty" type="doc" ext="jar" extra-classifier="javadoc" status="successful" details="" size="10429608" time="5683" location="C:\Users\Brennan\.ivy2\cache\io.netty\netty\docs\netty-3.9.0.Final-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/netty/netty/3.9.0.Final/netty-3.9.0.Final-javadoc.jar"/>
+					</artifact>
+					<artifact name="netty" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="1081647" time="951" location="C:\Users\Brennan\.ivy2\cache\io.netty\netty\srcs\netty-3.9.0.Final-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/netty/netty/3.9.0.Final/netty-3.9.0.Final-sources.jar"/>
+					</artifact>
+					<artifact name="netty" type="jar" ext="jar" status="successful" details="" size="1231993" time="942" location="C:\Users\Brennan\.ivy2\cache\io.netty\netty\jars\netty-3.9.0.Final.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/netty/netty/3.9.0.Final/netty-3.9.0.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.10.4" status="release" pubdate="20140318164629" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.10.4/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="2">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>
+				<metadata-artifact status="no" details="" size="2701" time="0" location="C:\Users\Brennan\.ivy2\cache\org.scala-lang\scala-library\ivy-2.10.4.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.pom"/>
+				<caller organisation="bdp3" name="bdp3$sources_javadoc_2.10" conf="optional, compile, provided, compile-internal" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="1.0" extra-info.apiURL="http://www.scala-lang.org/api/2.10.4/"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="7126372" time="0" location="C:\Users\Brennan\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.10.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.jar"/>
+					</artifact>
+					<artifact name="scala-library" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="33913490" time="0" location="C:\Users\Brennan\.ivy2\cache\org.scala-lang\scala-library\docs\scala-library-2.10.4-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4-javadoc.jar"/>
+					</artifact>
+					<artifact name="scala-library" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1062421" time="0" location="C:\Users\Brennan\.ivy2\cache\org.scala-lang\scala-library\srcs\scala-library-2.10.4-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.jsoup" name="jsoup">
+			<revision name="1.7.3" status="release" pubdate="20131110230932" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://jsoup.org/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="0">
+				<license name="The MIT License" url="http://jsoup.com/license"/>
+				<metadata-artifact status="no" details="" size="2908" time="0" location="C:\Users\Brennan\.ivy2\cache\org.jsoup\jsoup\ivy-1.7.3.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/jsoup/jsoup/1.7.3/jsoup-1.7.3.pom"/>
+				<caller organisation="bdp3" name="bdp3$sources_javadoc_2.10" conf="optional, compile, provided, compile-internal" rev="1.7.3" rev-constraint-default="1.7.3" rev-constraint-dynamic="1.7.3" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="jsoup" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="538549" time="0" location="C:\Users\Brennan\.ivy2\cache\org.jsoup\jsoup\docs\jsoup-1.7.3-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/jsoup/jsoup/1.7.3/jsoup-1.7.3-javadoc.jar"/>
+					</artifact>
+					<artifact name="jsoup" type="jar" ext="jar" status="no" details="" size="297387" time="0" location="C:\Users\Brennan\.ivy2\cache\org.jsoup\jsoup\jars\jsoup-1.7.3.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/jsoup/jsoup/1.7.3/jsoup-1.7.3.jar"/>
+					</artifact>
+					<artifact name="jsoup" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="122595" time="0" location="C:\Users\Brennan\.ivy2\cache\org.jsoup\jsoup\srcs\jsoup-1.7.3-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/jsoup/jsoup/1.7.3/jsoup-1.7.3-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
