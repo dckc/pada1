@@ -1,0 +1,62 @@
+CREATE TABLE sapp
+(
+  
+tourney character(100) NOT NULL,
+  
+hosted_by character(50),
+
+date_of date,  
+entrants integer,
+  
+match_num integer NOT NULL,
+  
+round_num integer,
+  
+w_tag character(50),
+  
+l_tag character(50),
+  
+w_games_won integer,
+  
+l_games_won integer,
+  
+w_seed integer,
+  
+l_seed integer,
+  
+CONSTRAINT sapp_pkey PRIMARY KEY (tourney, match_num)
+
+)
+
+
+WITH (
+  
+OIDS=FALSE
+
+);
+
+
+ALTER TABLE sapp
+  
+OWNER TO postgres;
+
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp31714.csv' DELIMITER ',' CSV HEADER;
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp32414.csv' DELIMITER ',' CSV HEADER;
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp33114.csv' DELIMITER ',' CSV HEADER;   
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp4714.csv' DELIMITER ',' CSV HEADER; 
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp41414.csv' DELIMITER ',' CSV HEADER; 
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp42114.csv' DELIMITER ',' CSV HEADER; 
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp42814.csv' DELIMITER ',' CSV HEADER;
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp51214pm.csv' DELIMITER ',' CSV HEADER;
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp31914pm.csv' DELIMITER ',' CSV HEADER; 
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp52614pm.csv' DELIMITER ',' CSV HEADER; 
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp6214pm.csv' DELIMITER ',' CSV HEADER;
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sappfe.csv' DELIMITER ',' CSV HEADER; 
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp61614.csv' DELIMITER ',' CSV HEADER;
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp62314.csv' DELIMITER ',' CSV HEADER; 
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\7vypet5i.csv' DELIMITER ',' CSV HEADER; 
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp7714singles.csv' DELIMITER ',' CSV HEADER;
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp71414.csv' DELIMITER ',' CSV HEADER;
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp72814pm.csv' DELIMITER ',' CSV HEADER;
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp8414pm.csv' DELIMITER ',' CSV HEADER;
+COPY sapp from 'C:\\Users\\Public\\CSV_Files\\sapp81114pm.csv' DELIMITER ',' CSV HEADER;           

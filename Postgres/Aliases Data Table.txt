@@ -1,0 +1,135 @@
+CREATE TABLE aliases
+(
+  
+original character(50),
+  
+alias character(50) NOT NULL,
+  
+CONSTRAINT aliases_pkey PRIMARY KEY (alias)
+
+)
+
+
+WITH (
+  
+OIDS=FALSE
+
+);
+
+
+ALTER TABLE aliases
+  
+OWNER TO postgres;
+
+insert into aliases (original, alias)
+values 
+('Arc', 'ARC'),
+('BlitzKriegDeity', 'Blitz'),
+('BlitzKriegDeity', 'BlitzKreigDeity'),
+('BlitzKriegDeity', 'Blitzkrieg Deity'),
+('BlitzKriegDeity', 'BlitzkriegDeity'),
+('Bones', 'Dr Poison; MD'),
+('Bones', 'Dr. Poison; M.D.'),
+('Bones', 'Dr. Poison Bones'),
+('Buzz Roll', 'Buzz-Roll'),
+('D-Rich', 'D-RIch'),
+('deadjames', 'Deadjames'),
+('deadjames', 'DEADJAMES'),
+('deadjames', 'Cannonsplarts'),
+('deadjames', 'Sam Ketchup'),
+('deadjames', 'thewobblyh'),
+('deadjames', 'the wobbly h'),
+('deadjames', 'Jacob Watson'),
+('deadjames', 'PS<3| deadjames'),
+('Deedz', 'SCG King Deedz'),
+('DMX', 'Run DMX'),
+('DMX', 'RunDMX'),
+('DMX', 'DMX Tremon 300'),
+('DMX', 'Jack Mustard'),
+('DMX', 'Dread'),
+('DMX', 'HNJKRS'),
+('Eggman', 'Egggman'),
+('Eggman', 'Egman'),
+('Eggman', 'EGman'),
+('Farnk', 'FARNK'),
+('HyperMatt', 'Hyper Matt'),
+('HyperMatt', 'Smoke Weed With Your Dad'),
+('J-Slo', 'J-slo'),
+('J-Slo', 'J-SLO'),
+('J-Slo', 'J~Slo'),
+('J-Slo', 'J-Slo (Frodo Sandbaggins)'),
+('Jamn', 'jamn'),
+('Kev', 'KEV'),
+('Meximan', 'Lan Brady; Marauder of Slaughter'),
+('Meximan', 'LAN BRADY'),
+('Norwood', 'NRWD'),
+('Norwood', 'Nrwd'),
+('Norwood', 'J-Nor'),
+('Norwood', 'Newd'),
+('Nuclear Meatball', 'NeclearMeatball'),
+('Nut Ranger', 'NutRanger'),
+('Nut Ranger', 'Nutranger'),
+('PK Shenanigans', 'Nickasaur!'),
+('PK Shenanigans', 'CheeseyPackets'),
+('PK Shenanigans', 'SDKIng'),
+('PK Shenanigans', '400 F'),
+('Psyko', 'Barrett'),
+('Psyko', 'Butternubs'),
+('Psyko', 'Psyko-Senpai'),
+('Psyko', 'PSYKO'),
+('Psyko', 'Turtle Princess'),
+('Psyko', 'XBM| Psyko'),
+('Rahma Noodles', 'Rahma'),
+('Rahma Noodles', 'Michael Torris'),
+('R-Frizzle', 'Friz'),
+('Robbie', 'Cod Fish Joe'),
+('Saber', 'SABER'),
+('SCG|FlashingFire', 'SCG | FlashingFire'),
+('SCG|FlashingFire', 'SCG| Flashing Fire'),
+('SCG|FlashingFire', 'SCG | Flashing Fire'),
+('SCG|FlashingFire', 'SCG Flashing Fire'),
+('SCG|Tinto', 'Wanderer Tinto'),
+('SCG|Zeej', 'SCG Zeej'),
+('SCG|Zeroic', 'SCG Absolute Zero')
+('Silent Protagonist', 'SILENTPROTAGONIST'),
+('Silent Protagonist', 'SilentProtag'),
+('Silent Protagonist', 'SilentProtagonist'),
+('Spire Fan', 'SPIRE FAN'),
+('Spire Fan', 'Spire_Fan'),
+('Spire Fan', 'SPIRE_Fan'),
+('Spire Fan', 'SPIRE_FAN'),
+('Spire Fan', 'Spirefan'),
+('Sro', 'SRO'),
+('Strong Bad', 'ABBBBBBK ('),
+('Strong Bad', 'Dunsparce'),
+('Strong Bad', 'Princess Luna'),
+('Strong Bad', 'Princess Luna~'),
+('Strong Bad', 'STRONG BAD'),
+('T-Rex', 'T-Rey'),
+('T-Rex', 'T-REY'),
+('T-Rex', 'didnt check in again'),
+('T-Rex', 'didnt check in'),
+('T-Rex', 'Pamonia'),
+('T-Rex', 'Great White Hype'),
+('VG Goron', 'VGG'),
+('VG Goron', 'VGGoron'),
+('VG Goron', 'VGGORON'),
+('VG Goron', 'Sky'),
+('XBM|Xion', 'Xion'),
+('XBM|Xion', 'XBM| Xion'),
+('XBM|Xion', 'Hidden Missles'),
+('XBM|Xion', 'Man at Arms'),
+('XBM|Xion', 'Black Jesus'),
+('Yeah Death!', 'Yeah Death')
+
+update sapp 
+set w_tag = a.original
+from aliases as a
+where a.alias = w_tag
+
+update sapp 
+set l_tag = a.original
+from aliases as a
+where a.alias = l_tag
+
+

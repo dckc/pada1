@@ -1,0 +1,44 @@
+CREATE TABLE dzc_biweeklies
+(
+  
+tourney character(50) NOT NULL,
+  
+hosted_by character(50),
+  
+entrants integer,
+  
+match_num integer NOT NULL,
+  
+round_num integer,
+  
+w_tag character(50),
+  
+l_tag character(50),
+  
+w_games_won integer,
+  
+l_games_won integer,
+  
+w_seed integer,
+  
+l_seed integer,
+  
+CONSTRAINT dzc_biweeklies_pkey PRIMARY KEY (tourney, match_num)
+
+)
+
+
+WITH (
+OIDS=FALSE
+);
+
+
+ALTER TABLE dzc_biweeklies
+  
+OWNER TO postgres;
+
+COPY DZC_BiWeeklies FROM 'C:\\Users\\Public\\CSV_Files\\dzcscgpm.csv' DELIMITER ',' CSV HEADER;
+COPY DZC_BiWeeklies FROM 'C:\\Users\\Public\\CSV_Files\\dzcscgpm3.csv' DELIMITER ',' CSV; 
+COPY DZC_BiWeeklies FROM 'C:\\Users\\Public\\CSV_Files\\dzcscgpm4.csv' DELIMITER ',' CSV; 
+COPY DZC_BiWeeklies FROM 'C:\\Users\\Public\\CSV_Files\\dzcscgpm5.csv' DELIMITER ',' CSV; 
+COPY DZC_BiWeeklies FROM 'C:\\Users\\Public\\CSV_Files\\dzpm6.csv' DELIMITER ',' CSV; 

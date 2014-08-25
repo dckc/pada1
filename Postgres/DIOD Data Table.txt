@@ -1,0 +1,52 @@
+CREATE TABLE diod
+(
+  
+tourney character(100) NOT NULL,
+  
+hosted_by character(50),
+  
+date_of date,
+  
+entrants integer,
+  
+match_num integer NOT NULL,
+  
+round_num integer,
+  
+w_tag character(50),
+  
+l_tag character(50),
+  
+w_games_won integer,
+  
+l_games_won integer,
+  
+w_seed integer,
+  
+l_seed integer,
+  
+CONSTRAINT diod_pkey PRIMARY KEY (tourney, match_num)
+
+)
+
+
+WITH (
+  
+OIDS=FALSE
+
+);
+
+
+ALTER TABLE diod
+  
+OWNER TO postgres;
+
+
+COPY diod from 'C:\\Users\\Public\\CSV_Files\\diordie.csv' DELIMITER ',' CSV HEADER;
+COPY diod from 'C:\\Users\\Public\\CSV_Files\\diordie2.csv' DELIMITER ',' CSV HEADER;
+COPY diod from 'C:\\Users\\Public\\CSV_Files\\diod3pmsingles.csv' DELIMITER ',' CSV HEADER;
+COPY diod from 'C:\\Users\\Public\\CSV_Files\\diod4singles.csv' DELIMITER ',' CSV HEADER;
+COPY diod from 'C:\\Users\\Public\\CSV_Files\\diodvsingles.csv' DELIMITER ',' CSV HEADER;
+COPY diod from 'C:\\Users\\Public\\CSV_Files\\diodvisingles.csv' DELIMITER ',' CSV HEADER;
+COPY diod from 'C:\\Users\\Public\\CSV_Files\\diod71v1.csv' DELIMITER ',' CSV HEADER;
+COPY diod from 'C:\\Users\\Public\\CSV_Files\\diod81v1.csv' DELIMITER ',' CSV HEADER;

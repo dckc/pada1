@@ -1,0 +1,113 @@
+// ***Create Table Statement***
+CREATE TABLE dzc_biweeklies
+(
+  
+tourney character(100) NOT NULL,
+  
+hosted_by character(50),
+  
+entrants integer,
+  
+match_num integer NOT NULL,
+  
+round_num integer,
+  
+w_tag character(50),
+  
+l_tag character(50),
+  
+w_games_won integer,
+  
+l_games_won integer,
+  
+w_seed integer,
+  
+l_seed integer,
+  
+CONSTRAINT dzc_biweeklies_pkey PRIMARY KEY (tourney, match_num)
+
+)
+
+
+WITH (
+OIDS=FALSE
+);
+
+
+ALTER TABLE dzc_biweeklies
+  
+OWNER TO postgres;
+
+// ***Import data***
+COPY DZC_BiWeeklies FROM 'C:\\Users\\Public\\CSV_Files\\dzcscgpm.csv' DELIMITER ',' CSV HEADER;
+COPY DZC_BiWeeklies FROM 'C:\\Users\\Public\\CSV_Files\\dzcscgpm3.csv' DELIMITER ',' CSV HEADER; 
+COPY DZC_BiWeeklies FROM 'C:\\Users\\Public\\CSV_Files\\dzcscgpm4.csv' DELIMITER ',' CSV HEADER; 
+COPY DZC_BiWeeklies FROM 'C:\\Users\\Public\\CSV_Files\\dzcscgpm5.csv' DELIMITER ',' CSV HEADER; 
+COPY DZC_BiWeeklies FROM 'C:\\Users\\Public\\CSV_Files\\dzpm6.csv' DELIMITER ',' CSV HEADER;
+
+// ***Rudimentary Player-vs-Player Win-Loss Records*** 
+// This is a self-join 
+select x.*, coalesce(y.losses, 0) from (
+select w_tag, l_tag, count(*) as wins from DZC_BiWeeklies 
+group by w_tag, l_tag 
+) as x
+left join(
+select count(*) as losses, w_tag, l_tag from DZC_BiWeeklies 
+group by w_tag, l_tag
+)
+as y
+on x.l_tag = y.w_tag 
+and x.w_tag = y.l_tag
+order by x.w_tag, x.l_tag
+
+// ***Overall Win-Loss Records***
+select x.w_tag, x.sets_won, coalesce(y.sets_lost, 0) as sets_lost from (
+select w_tag, count(*) as sets_won from dzc_biweeklies
+group by w_tag
+) as x
+left join (
+select l_tag, count(*) as sets_lost from dzc_biweeklies
+group by l_tag
+) as y
+on x.w_tag = y.l_tag
+
+union
+
+(select x2.l_tag, coalesce(y2.sets_won, 0), x2.sets_lost from (
+select l_tag, count(*) as sets_lost from dzc_biweeklies
+group by l_tag
+) as x2
+left join (
+select w_tag, count(*) as sets_won from dzc_biweeklies
+group by w_tag
+) as y2
+on x2.l_tag = y2.w_tag) 
+
+order by sets_won desc, sets_lost 
+
+// ***Overall Win Percentages and Win-Loss Records***
+select z.*, round((sets_won * 100.0 / (sets_won + sets_lost) * 1.0), 3) as win_percentage from (
+select x.w_tag, x.sets_won, coalesce(y.sets_lost, 0) as sets_lost from (
+select w_tag, count(*) as sets_won from dzc_biweeklies
+group by w_tag
+) as x
+left join (
+select l_tag, count(*) as sets_lost from dzc_biweeklies
+group by l_tag
+) as y
+on x.w_tag = y.l_tag
+
+union
+
+(select x2.l_tag, coalesce(y2.sets_won, 0), x2.sets_lost from (
+select l_tag, count(*) as sets_lost from dzc_biweeklies
+group by l_tag
+) as x2
+left join (
+select w_tag, count(*) as sets_won from dzc_biweeklies
+group by w_tag
+) as y2
+on x2.l_tag = y2.w_tag)
+) as z
+
+order by win_percentage desc, sets_won desc, sets_lost

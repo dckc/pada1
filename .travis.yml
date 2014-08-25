@@ -1,0 +1,8 @@
+# http://docs.travis-ci.com/user/getting-started/
+language: scala
+scala:
+  - "2.10.3"
+jdk:
+  - openjdk7
+#  - oraclejdk7
+#  - openjdk6
